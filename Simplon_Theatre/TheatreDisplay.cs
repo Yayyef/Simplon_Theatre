@@ -27,7 +27,16 @@ namespace Simplon_Theatre
                         newRow.Append("[X]");
                 }
                 Console.WriteLine(newRow);
+
+                
             }
+            StringBuilder seatsNumberDisplay = new StringBuilder();
+            seatsNumberDisplay.Append(" ");
+            for (int i = 0; i < seats; i++)
+            {
+                seatsNumberDisplay.Append($" {i} ");
+            }
+            Console.WriteLine(seatsNumberDisplay);
         }
     }
 }
