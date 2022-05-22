@@ -83,9 +83,14 @@ namespace Simplon_Theatre
 
             }
             else
+            {
+                Console.Clear();
                 Console.WriteLine("Merci pour votre réservation!");
+            }
+                
         }
 
+        // DEMANDE LES ENTREES UTILISATEURS
         public void AskUserInput()
         {
             TheatreDisplay.Display(Rows, Seats, SeatsList);
@@ -102,18 +107,29 @@ namespace Simplon_Theatre
 
             BookSeats(row, seats);
             TheatreDisplay.Display(Rows, Seats, SeatsList);
-
-            Console.Clear();
+            AskBookAgain();
+        }
+        
+        // METHODE POUR DEMANDER SI L'UTILISATEUR VEUT EFFECTUER UNE NOUVELLE RESERVATION
+        private void AskBookAgain()
+        {
             Console.WriteLine("Désirez-vous réserver à nouveau? Y/N");
             string userAnswer = Console.ReadLine();
-            if (userAnswer.ToLower() == "y")
+            if (userAnswer.ToLower().Trim() != "y" && userAnswer.ToLower().Trim() != "n")
             {
-                Console.Clear();
-                AskUserInput();
+                Console.WriteLine("Je ne comprends pas votre réponse.");
+                AskBookAgain();
             }
             else
-                Console.WriteLine("Merci d'être venu au Simplon Theatre! Bonne journée!");
+            {
+                if (userAnswer.ToLower().Trim() == "y")
+                {
+                    Console.Clear();
+                    AskUserInput();
+                } else
+                    Console.WriteLine("Merci d'être venu au Simplon Theatre! Bonne journée!");
+            }
+               
         }
-
     }
 }
